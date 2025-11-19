@@ -19,12 +19,12 @@ const HeroSection = () => {
               </div>
 
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-                Topraksız Tarım,
-                <span className="text-emerald-600"> Maksimum Lezzet</span>
+                Doğayla Buluşan,
+                <span className="text-emerald-600"> Taze Lezzet</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
-                Hidroponik tarım sistemlerimiz ile pestisitsiz, taze ve doğal ürünler yetiştiriyoruz.
+                Taze, güvenilir ve doğadan gelen sebzeler sunuyoruz. Hidroponik tarım ile doğaya zarar vermeden, bilinçli üretim yapıyoruz.
               </p>
 
               <div className="relative inline-block">

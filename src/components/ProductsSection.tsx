@@ -1,9 +1,19 @@
 import React from 'react'
 import Image from 'next/image';
 import { Leaf } from 'lucide-react';
-import { products } from '../app/urunler/page';
+import { getProducts } from '../lib/actions/products';
+import type { Product } from '../lib/types';
 
-const ProductsSection = () => {
+
+const ProductsSection = async () => {
+
+  let products: Product[] = [];
+  try {
+    products = await getProducts();
+  } catch (error) {
+    console.error('Error loading products:', error);
+  }
+
   return (
     <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,28 +27,31 @@ const ProductsSection = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.slice(0, 8).map((product) => (
+            {products?.slice(0, 8).map((product) => (
               <div
                 key={product.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1"
               >
                 <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                    width={600}
-                    height={400}
-                  />
+                  {product.image_url ? (
+                      <Image
+                        src={product.image_url}
+                        alt={product.name}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        width={600}
+                        height={400}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        <Leaf className="w-16 h-16" />
+                      </div>
+                    )}
                   <div className="absolute top-4 right-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
                     <Leaf className="w-3 h-3" />
                     <span>Taze</span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <p className="text-sm text-emerald-600 font-medium mb-2">
-                    {product.category}
-                  </p>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {product.name}
                   </h3>

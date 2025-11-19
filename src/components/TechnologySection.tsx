@@ -18,13 +18,13 @@ const TechnologySection = () => {
             </div>
             <div className="order-1 md:order-2 space-y-6">
               <h2 className="text-4xl font-bold text-gray-900">
-                Geleceğin Tarımı, Bugünden
+                Doğadan İlham Alan Üretim
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Ada Bahçe olarak, sürdürülebilir tarım teknolojileri ile hem çevreyi koruyoruz hem de en taze ürünleri sofranıza getiriyoruz.
+                Doğadan aldığımız ilhamı modern üretim anlayışıyla birleştiriyor; çevreye duyarlı, yenilikçi ve izlenebilir bir sistem kuruyoruz.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Hidroponik sistemlerimiz sayesinde minimum kaynak kullanımı ile maksimum verim elde ediyoruz.
+                Üretim bizim için sadece bir süreç değil, doğayla kurulan bilinçli bir denge. Her hasatta doğayla birlikte büyüyor, yaşamı besleyen bir denge kuruyoruz.
               </p>
               <Link
                 href="/teknoloji"

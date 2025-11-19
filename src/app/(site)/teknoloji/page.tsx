@@ -18,7 +18,7 @@ const Technology = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Teknolojimiz</h1>
           <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-            Son teknoloji hidroponik sistemlerle geleceğin tarımını bugün yapıyoruz
+            Hidroponik tarım ile doğaya zarar vermeden, kaynakları bilinçle kullanıyoruz
           </p>
         </div>
       </section>
@@ -28,17 +28,17 @@ const Technology = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-gray-900">
-                Hidroponik Nedir?
+                Hidroponik Tarımımız
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Hidroponik, bitkiların toprak olmadan, besin açısından zengin su çözeltileri içinde yetiştirildiği modern bir tarım yöntemidir.
+                Hidroponik (topraksız) tarım yöntemiyle doğaya zarar vermeden üretim yapıyoruz. Su, enerji ve alan verimliliğini esas alarak, kaynakları bilinçle kullanıyoruz.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Bu sistem sayesinde bitkiler ihtiyaç duydukları tüm besinleri doğrudan kökleri aracılığıyla alır, bu da daha hızlı büyüme ve daha yüksek verim anlamına gelir.
+                Her bir bitkinin en doğal koşullarda, dengeli bir biçimde büyümesini sağlıyoruz. Doğadan aldığımız ilhamı modern üretim anlayışıyla birleştiriyoruz.
               </p>
               <div className="bg-emerald-50 border-l-4 border-emerald-600 p-6 rounded-r-lg">
                 <p className="text-emerald-900 font-medium">
-                  Ada Bahçe, NFT (Nutrient Film Technique) ve DWC (Deep Water Culture) sistemlerini kullanmaktadır.
+                  Çevreye duyarlı, yenilikçi ve izlenebilir bir sistem kuruyoruz.
                 </p>
               </div>
             </div>
@@ -200,23 +200,23 @@ const Technology = () => {
 
             <div className="order-1 md:order-2 space-y-6">
               <h2 className="text-4xl font-bold text-gray-900">
-                Sürdürülebilir Gelecek
+                Bilinçli Denge
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Ada Bahçe olarak teknolojimizi sürekli geliştiriyoruz. Yenilenebilir enerji kaynaklarını entegre ediyor, atık su yönetimini optimize ediyor ve karbon ayak izimizi minimize ediyoruz.
+                Her adımda doğayla uyumu, şeffaflığı ve sorumluluğu ön planda tutuyoruz. Üretim bizim için sadece bir süreç değil, doğayla kurulan bilinçli bir denge.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Amacımız sadece bugün değil, gelecek nesiller için de sürdürülebilir tarım çözümleri sunmak.
+                Her hasatta doğayla birlikte büyüyor, yaşamı besleyen bir denge kuruyoruz. Amacımız; hidroponik tarımla yetiştirdiğimiz taze sebzeleri, adalılara hızlı ve güvenilir bir şekilde ulaştırmak.
               </p>
 
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="bg-emerald-50 p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-emerald-700">%95</p>
-                  <p className="text-sm text-gray-600">Enerji Verimliliği</p>
+                  <p className="text-3xl font-bold text-emerald-700">%100</p>
+                  <p className="text-sm text-gray-600">Sürdürülebilir</p>
                 </div>
                 <div className="bg-emerald-50 p-4 rounded-lg">
                   <p className="text-3xl font-bold text-emerald-700">%100</p>
-                  <p className="text-sm text-gray-600">Doğal Üretim</p>
+                  <p className="text-sm text-gray-600">İzlenebilir</p>
                 </div>
               </div>
             </div>

@@ -19,7 +19,7 @@ export default function Footer() {
                 <span className="text-xl font-bold">Ada Bahçe</span>
             </div>
             <p className="text-emerald-100 text-sm leading-relaxed">
-              Topraksız tarım teknolojileri ile doğal ve taze ürünler yetiştiriyoruz.
+              Doğadan aldığımız ilhamla adalılara taze, güvenilir sebzeler sunuyoruz. Doğal olarak taze. 🌿
             </p>
           </div>
 

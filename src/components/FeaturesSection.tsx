@@ -9,7 +9,7 @@ const FeaturesSection = () => {
               Neden Ada Bahçe?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Modern tarım teknolojileri ile doğaya saygılı, sürdürülebilir üretim yapıyoruz.
+              Su, enerji ve alan verimliliğini esas alarak, kaynakları bilinçle kullanıyoruz.
             </p>
           </div>
 
@@ -19,10 +19,10 @@ const FeaturesSection = () => {
                 <Droplets className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Su Tasarrufu
+                Bilinçli Su Kullanımı
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Hidroponik sistemlerimiz geleneksel tarıma göre %90 daha az su kullanır.
+                Su verimliliğini esas alarak, kaynakları sorumlu bir şekilde kullanıyoruz.
               </p>
             </div>
 
@@ -31,10 +31,10 @@ const FeaturesSection = () => {
                 <Leaf className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Pestisitsiz
+                Doğal Koşullar
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Kapalı sistem sayesinde zararlılara karşı kimyasal kullanmadan koruma sağlarız.
+                Her bir bitkinin en doğal koşullarda, dengeli bir biçimde büyümesini sağlıyoruz.
               </p>
             </div>
 
@@ -43,10 +43,10 @@ const FeaturesSection = () => {
                 <Sun className="w-7 h-7 text-emerald-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Tüm Mevsim
+                Alan Verimliliği
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Kontrollü ortam sayesinde yıl boyunca kesintisiz üretim yapabiliyoruz.
+                Topraksız tarım ile alan verimliliği sağlayarak sürdürülebilir üretim yapıyoruz.
               </p>
             </div>
           </div>

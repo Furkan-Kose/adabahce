@@ -18,7 +18,7 @@ const About = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Hakkımızda</h1>
           <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-            Doğaya saygılı, teknolojiye açık. Ada Bahçe ile tanışın.
+            Doğadan aldığımız ilhamla geleceğe sürdürülebilir bir üretim anlayışı sunuyoruz.
           </p>
         </div>
       </section>
@@ -31,13 +31,13 @@ const About = () => {
                 Biz Kimiz?
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Ada Bahçe, Türkiye&apos;de hidroponik tarım teknolojileri ile sürdürülebilir ve doğal gıda üretimi yapan öncü bir şirkettir.
+                Adada yaşayan herkesin ortak bir isteği var: Taze, güvenilir ve doğadan gelen sebzeleri sofrasında görmek. Biz, bu isteğin doğayla buluştuğu yerdeyiz.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                2020 yılında kurulan şirketimiz, modern tarım teknolojilerini geleneksel değerlerimizle birleştirerek, hem çevreyi koruyan hem de en kaliteli ürünleri üreten bir sistem geliştirmiştir.
+                Ada Bahçe, doğadan aldığı ilhamla geleceğe sürdürülebilir bir üretim anlayışı sunan bir markadır. Hidroponik (topraksız) tarım yöntemiyle doğaya zarar vermeden, kaynakları bilinçle kullanarak üretim yapar; su, enerji ve alan verimliliğini esas alır.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Topraksız tarım sayesinde su tasarrufu, pestisitsiz üretim ve mevsimden bağımsız hasat imkanı sunuyoruz.
+                Her bir bitkinin en doğal koşullarda, dengeli bir biçimde büyümesini sağlar. Üretim bizim için sadece bir süreç değil, doğayla kurulan bilinçli bir denge.
               </p>
             </div>
 
@@ -61,7 +61,7 @@ const About = () => {
               Değerlerimiz
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ada Bahçe&quot;yi Ada Bahçe yapan temel prensiplerimiz
+              Değerlerimiz doğayla birlikte filizleniyor
             </p>
           </div>
 
@@ -71,10 +71,10 @@ const About = () => {
                 <Target className="w-8 h-8 text-emerald-700" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Kalite
+                Doğayla Uyum
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Her üretim aşamasında en yüksek kalite standartlarını koruyoruz.
+                Her adımda doğayla uyumu ön planda tutuyor, çevreye duyarlı bir sistem kuruyoruz.
               </p>
             </div>
 
@@ -83,10 +83,10 @@ const About = () => {
                 <Heart className="w-8 h-8 text-emerald-700" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Sürdürülebilirlik
+                Şeffaflık
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Çevre dostu üretim yöntemleriyle gelecek nesillere yaşanabilir bir dünya bırakıyoruz.
+                İzlenebilir bir sistem ile her sürecimizi açık ve şeffaf bir şekilde yönetiyoruz.
               </p>
             </div>
 
@@ -95,10 +95,10 @@ const About = () => {
                 <Award className="w-8 h-8 text-emerald-700" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                İnovasyon
+                Yenilikçilik
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Son teknoloji ile sürekli gelişen sistemlerimizle sektöre öncülük ediyoruz.
+                Doğadan aldığımız ilhamı modern üretim anlayışıyla birleştiriyoruz.
               </p>
             </div>
 
@@ -107,10 +107,10 @@ const About = () => {
                 <Users className="w-8 h-8 text-emerald-700" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Güven
+                Sorumluluk
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Müşterilerimize karşı şeffaflık ve dürüstlük ilkesiyle hareket ediyoruz.
+                Kaynakları bilinçle kullanarak sorumlu ve sürdürülebilir üretim yapıyoruz.
               </p>
             </div>
           </div>
@@ -132,18 +132,18 @@ const About = () => {
 
             <div className="order-1 md:order-2 space-y-6">
               <h2 className="text-4xl font-bold text-gray-900">
-                Vizyonumuz
+                Misyonumuz
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Türkiye&apos;de topraksız tarımın öncüsü olarak, sürdürülebilir gıda üretiminde lider konuma gelmek.
+                Hidroponik tarımla yetiştirdiğimiz taze sebzeleri, adalılara hızlı ve güvenilir bir şekilde ulaştırmak.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Her eve taze, doğal ve güvenilir ürünler ulaştırarak, toplum sağlığına katkıda bulunmak istiyoruz.
+                Her hasatta doğayla birlikte büyüyor, yaşamı besleyen bir denge kuruyoruz. Doğadan aldığımız ilhamı modern üretim anlayışıyla birleştirerek çevreye duyarlı, yenilikçi ve izlenebilir bir sistem kuruyoruz.
               </p>
 
               <div className="bg-emerald-50 border-l-4 border-emerald-600 p-6 rounded-r-lg">
                 <p className="text-emerald-900 font-medium italic">
-                  &quot;Doğal olarak taze&quot; sloganımızla, her gün binlerce aileye sağlıklı yaşam sunuyoruz.
+                  &quot;Ada Bahçe - Doğal olarak taze. 🌿&quot;
                 </p>
               </div>
             </div>
