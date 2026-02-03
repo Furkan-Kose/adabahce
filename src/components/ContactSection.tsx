@@ -31,8 +31,7 @@ const ContactSection = () => {
                     <Mail className="w-5 h-5" />
                     <span className="font-medium text-gray-900">E-posta</span>
                   </div>
-                  <p className="text-gray-600 text-sm">info@adabahce.com</p>
-                  <p className="text-gray-600 text-sm">siparis@adabahce.com</p>
+                  <p className="text-gray-600 text-sm">iletisim@adabahce.com.tr</p>
                 </div>
               </div>
 

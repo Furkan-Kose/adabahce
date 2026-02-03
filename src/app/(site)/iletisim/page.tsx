@@ -1,9 +1,16 @@
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
-import { Metadata } from 'next';
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'İletişim',
-}
+  title: "İletişim",
+  description:
+    "Ada Bahçe ile iletişime geçin. Sorularınız, önerileriniz ve iş birliği teklifleri için bizimle iletişim kurun.",
+  openGraph: {
+    title: "İletişim | Ada Bahçe",
+    description: "Ada Bahçe ile iletişim bilgileri ve iletişim formu.",
+    url: "https://adabahce.com.tr/iletisim",
+  },
+};
 
 const Contact = () => {
   return (
@@ -18,7 +25,8 @@ const Contact = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">İletişim</h1>
           <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-            Sorularınız için bize ulaşın, size yardımcı olmaktan mutluluk duyarız
+            Sorularınız için bize ulaşın, size yardımcı olmaktan mutluluk
+            duyarız
           </p>
         </div>
       </section>
@@ -31,7 +39,9 @@ const Contact = () => {
               Bizimle İletişime Geçin
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed text-center">
-              Ada Bahçe ürünleri hakkında bilgi almak, sipariş vermek veya işbirliği teklifleri için aşağıdaki iletişim kanallarından bize ulaşabilirsiniz.
+              Ada Bahçe ürünleri hakkında bilgi almak, sipariş vermek veya
+              işbirliği teklifleri için aşağıdaki iletişim kanallarından bize
+              ulaşabilirsiniz.
             </p>
           </div>
 
@@ -41,7 +51,9 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-emerald-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Telefon</h3>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  Telefon
+                </h3>
                 <p className="text-gray-600">+90 (555) 123 45 67</p>
                 <p className="text-gray-600">+90 (555) 987 65 43</p>
               </div>
@@ -52,9 +64,10 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-emerald-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">E-posta</h3>
-                <p className="text-gray-600">info@adabahce.com</p>
-                <p className="text-gray-600">siparis@adabahce.com</p>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  E-posta
+                </h3>
+                <p className="text-gray-600">iletisim@adabahce.com.tr</p>
               </div>
             </div>
 
@@ -63,10 +76,14 @@ const Contact = () => {
                 <MapPin className="w-6 h-6 text-emerald-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Adres</h3>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  Adres
+                </h3>
                 <p className="text-gray-600">
-                  Hidroponik Tarım Merkezi<br />
-                  Yeşilköy Mah. Tarım Cad. No:45<br />
+                  Hidroponik Tarım Merkezi
+                  <br />
+                  Yeşilköy Mah. Tarım Cad. No:45
+                  <br />
                   İstanbul, Türkiye
                 </p>
               </div>
@@ -77,7 +94,9 @@ const Contact = () => {
                 <Clock className="w-6 h-6 text-emerald-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-gray-900 mb-1">Çalışma Saatleri</h3>
+                <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                  Çalışma Saatleri
+                </h3>
                 <p className="text-gray-600">Pazartesi - Cuma: 08:00 - 18:00</p>
                 <p className="text-gray-600">Cumartesi: 09:00 - 15:00</p>
                 <p className="text-gray-600">Pazar: Kapalı</p>
@@ -90,7 +109,8 @@ const Contact = () => {
               Tesisi Ziyaret Edin
             </h3>
             <p className="text-gray-600 text-center">
-              Hidroponik tarım sistemlerimizi yakından görmek için randevu alabilirsiniz. Size özel bir tur düzenlemekten mutluluk duyarız.
+              Hidroponik tarım sistemlerimizi yakından görmek için randevu
+              alabilirsiniz. Size özel bir tur düzenlemekten mutluluk duyarız.
             </p>
           </div>
         </div>
@@ -117,6 +137,6 @@ const Contact = () => {
       </section>
     </div>
   );
-}
+};
 
 export default Contact;

@@ -58,7 +58,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start space-x-2 text-emerald-100 text-sm">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>info@adabahce.com</span>
+                <span>iletisim@adabahce.com.tr</span>
               </li>
               <li className="flex items-start space-x-2 text-emerald-100 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />

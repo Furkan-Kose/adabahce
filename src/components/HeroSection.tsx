@@ -53,7 +53,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.pexels.com/photos/4505166/pexels-photo-4505166.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="/images/hero.jpeg"
                   alt="Hidroponik Tarım"
                   className="w-full h-[500px] object-cover"
                   width={800}

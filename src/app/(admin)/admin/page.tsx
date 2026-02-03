@@ -1,16 +1,25 @@
-import { BoxIcon, List, PlusCircle } from 'lucide-react';
-import { getProducts } from '../../../lib/actions/products';
-import Link from 'next/link';
-import type { Product } from '../../../lib/types';
-import Image from 'next/image';
+import { BoxIcon, List, PlusCircle } from "lucide-react";
+import { getProducts } from "../../../lib/actions/products";
+import Link from "next/link";
+import type { Product } from "../../../lib/types";
+import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin Paneli",
+  description: "Ada Bahçe admin paneli dashboard.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function AdminDashboard() {
-
   let products: Product[] = [];
   try {
     products = await getProducts();
   } catch (error) {
-    console.error('Error loading products:', error);
+    console.error("Error loading products:", error);
   }
 
   const productCount = products?.length || 0;
@@ -19,7 +28,9 @@ export default async function AdminDashboard() {
   return (
     <div className="p-8 space-y-8">
       {/* Başlık */}
-      <h1 className="text-3xl font-bold text-gray-800">Admin Panel - Anasayfa</h1>
+      <h1 className="text-3xl font-bold text-gray-800">
+        Admin Panel - Anasayfa
+      </h1>
 
       {/* Kartlar */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -33,7 +44,10 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Ürünler Sayfası */}
-        <Link href="/admin/urunler" className="bg-white shadow-lg p-6 rounded-lg flex items-center justify-between hover:shadow-xl transition">
+        <Link
+          href="/admin/urunler"
+          className="bg-white shadow-lg p-6 rounded-lg flex items-center justify-between hover:shadow-xl transition"
+        >
           <div>
             <h2 className="text-xl font-semibold text-gray-700">Tüm Ürünler</h2>
             <p className="text-lg text-gray-900">Listele ve Düzenle</p>
@@ -42,9 +56,14 @@ export default async function AdminDashboard() {
         </Link>
 
         {/* Yeni Ürün Ekle */}
-        <Link href="/admin/urunler/ekle" className="bg-white shadow-lg p-6 rounded-lg flex items-center justify-between hover:shadow-xl transition">
+        <Link
+          href="/admin/urunler/ekle"
+          className="bg-white shadow-lg p-6 rounded-lg flex items-center justify-between hover:shadow-xl transition"
+        >
           <div>
-            <h2 className="text-xl font-semibold text-gray-700">Yeni Ürün Ekle</h2>
+            <h2 className="text-xl font-semibold text-gray-700">
+              Yeni Ürün Ekle
+            </h2>
             <p className="text-lg text-gray-900">Hızlı Erişim</p>
           </div>
           <PlusCircle className="text-4xl text-purple-500" />
@@ -61,7 +80,10 @@ export default async function AdminDashboard() {
         ) : (
           <ul className="space-y-4">
             {lastFiveProducts.map((product) => (
-              <li key={product.id} className="flex items-start gap-4 border-b pb-4">
+              <li
+                key={product.id}
+                className="flex items-start gap-4 border-b pb-4"
+              >
                 {product.image_url ? (
                   <Image
                     src={product.image_url}
@@ -76,7 +98,9 @@ export default async function AdminDashboard() {
                   </div>
                 )}
                 <div>
-                  <h3 className="font-semibold text-gray-800">{product.name}</h3>
+                  <h3 className="font-semibold text-gray-800">
+                    {product.name}
+                  </h3>
                   <p className="text-gray-600">{product.description || "-"}</p>
                 </div>
               </li>

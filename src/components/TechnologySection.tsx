@@ -9,7 +9,7 @@ const TechnologySection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <Image
-                src="https://images.pexels.com/photos/5231153/pexels-photo-5231153.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/images/about.jpeg"
                 alt="Yeşil Yapraklar"
                 className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
                 width={800}

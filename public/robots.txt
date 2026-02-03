@@ -1,0 +1,9 @@
+# Robots.txt for Ada Bahçe
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/auth
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://adabahce.com.tr/sitemap.xml

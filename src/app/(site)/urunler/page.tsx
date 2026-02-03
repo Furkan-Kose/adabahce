@@ -1,20 +1,26 @@
-import { Leaf } from 'lucide-react';
-import { Metadata } from 'next';
-import Image from 'next/image';
-import { getProducts } from '../../../lib/actions/products';
-import type { Product } from '../../../lib/types';
+import { Leaf } from "lucide-react";
+import { Metadata } from "next";
+import Image from "next/image";
+import { getProducts } from "../../../lib/actions/products";
+import type { Product } from "../../../lib/types";
 
 export const metadata: Metadata = {
-  title: 'Ürünlerimiz',
+  title: "Ürünlerimiz",
+  description:
+    "Ada Bahçe'nin organik ürünleri keşfedin. Topraksız tarım ile üretilen doğal, taze ve lezzetli sebze ve meyveler.",
+  openGraph: {
+    title: "Ürünlerimiz | Ada Bahçe",
+    description: "Ada Bahçe'nin organik sebze ve meyve ürünleri.",
+    url: "https://adabahce.com.tr/urunler",
+  },
 };
 
 const Products = async () => {
-
   let products: Product[] = [];
   try {
     products = await getProducts();
   } catch (error) {
-    console.error('Error loading products:', error);
+    console.error("Error loading products:", error);
   }
 
   return (
@@ -38,7 +44,9 @@ const Products = async () => {
           {products.length === 0 ? (
             <div className="text-center py-16">
               <div className="bg-gray-100 rounded-lg p-8">
-                <p className="text-gray-600 text-lg">Henüz ürün bulunmamaktadır.</p>
+                <p className="text-gray-600 text-lg">
+                  Henüz ürün bulunmamaktadır.
+                </p>
               </div>
             </div>
           ) : (
@@ -129,7 +137,8 @@ const Products = async () => {
                       Yüksek Besin Değeri
                     </h3>
                     <p className="text-gray-600">
-                      Optimum koşullarda yetiştirilen ürünlerimiz vitamin ve mineral açısından zengindir.
+                      Optimum koşullarda yetiştirilen ürünlerimiz vitamin ve
+                      mineral açısından zengindir.
                     </p>
                   </div>
                 </div>
@@ -143,7 +152,8 @@ const Products = async () => {
                       Çevre Dostu
                     </h3>
                     <p className="text-gray-600">
-                      Su tasarrufu sağlayan sistemlerimizle doğaya saygılı üretim yapıyoruz.
+                      Su tasarrufu sağlayan sistemlerimizle doğaya saygılı
+                      üretim yapıyoruz.
                     </p>
                   </div>
                 </div>
@@ -154,6 +164,6 @@ const Products = async () => {
       </section>
     </div>
   );
-}
+};
 
-export default Products
+export default Products;
