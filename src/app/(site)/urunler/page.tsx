@@ -4,6 +4,8 @@ import Image from "next/image";
 import { getProducts } from "../../../lib/actions/products";
 import type { Product } from "../../../lib/types";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Ürünlerimiz",
   description:

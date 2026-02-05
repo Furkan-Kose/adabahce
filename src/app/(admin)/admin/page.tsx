@@ -5,6 +5,8 @@ import type { Product } from "../../../lib/types";
 import Image from "next/image";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Admin Paneli",
   description: "Ada Bahçe admin paneli dashboard.",

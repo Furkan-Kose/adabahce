@@ -6,6 +6,8 @@ import TechnologySection from "@/components/TechnologySection";
 import ContactSection from "@/components/ContactSection";
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Anasayfa",
   description:
