@@ -54,8 +54,7 @@ const Contact = () => {
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">
                   Telefon
                 </h3>
-                <p className="text-gray-600">+90 (555) 123 45 67</p>
-                <p className="text-gray-600">+90 (555) 987 65 43</p>
+                <p className="text-gray-600">+90 (539) 121 91 95</p>
               </div>
             </div>
 
@@ -80,11 +79,9 @@ const Contact = () => {
                   Adres
                 </h3>
                 <p className="text-gray-600">
-                  Hidroponik Tarım Merkezi
+                  Şehit Lütfi Celül Sokak No:3/A
                   <br />
-                  Yeşilköy Mah. Tarım Cad. No:45
-                  <br />
-                  İstanbul, Türkiye
+                  Yedidalga/LEFKE
                 </p>
               </div>
             </div>

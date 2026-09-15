@@ -1,6 +1,6 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -9,17 +9,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-                <Image
-                  src="/logo.png"
-                  alt="Ada Bahçe Logo"
-                  width={64}
-                  height={64}
-                  className="object-contain"
-                />
-                <span className="text-xl font-bold">Ada Bahçe</span>
+              <Image
+                src="/logo.png"
+                alt="Ada Bahçe Logo"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+              <span className="text-xl font-bold">Ada Bahçe</span>
             </div>
             <p className="text-emerald-100 text-sm leading-relaxed">
-              Doğadan aldığımız ilhamla adalılara taze, güvenilir sebzeler sunuyoruz. Doğal olarak taze. 🌿
+              Doğadan aldığımız ilhamla adalılara taze, güvenilir sebzeler
+              sunuyoruz. Doğal olarak taze. 🌿
             </p>
           </div>
 
@@ -27,22 +28,34 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4">Hızlı Bağlantılar</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-emerald-100 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/"
+                  className="text-emerald-100 hover:text-white transition-colors text-sm"
+                >
                   Ana Sayfa
                 </Link>
               </li>
               <li>
-                <Link href="/hakkimizda" className="text-emerald-100 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/hakkimizda"
+                  className="text-emerald-100 hover:text-white transition-colors text-sm"
+                >
                   Hakkımızda
                 </Link>
               </li>
               <li>
-                <Link href="/urunler" className="text-emerald-100 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/urunler"
+                  className="text-emerald-100 hover:text-white transition-colors text-sm"
+                >
                   Ürünlerimiz
                 </Link>
               </li>
               <li>
-                <Link href="/teknoloji" className="text-emerald-100 hover:text-white transition-colors text-sm">
+                <Link
+                  href="/teknoloji"
+                  className="text-emerald-100 hover:text-white transition-colors text-sm"
+                >
                   Teknoloji
                 </Link>
               </li>
@@ -54,7 +67,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-emerald-100 text-sm">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>+90 (555) 123 45 67</span>
+                <span>+90 (539) 121 91 95</span>
               </li>
               <li className="flex items-start space-x-2 text-emerald-100 text-sm">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0" />
@@ -62,7 +75,11 @@ export default function Footer() {
               </li>
               <li className="flex items-start space-x-2 text-emerald-100 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>İstanbul, Türkiye</span>
+                <span>
+                  Şehit Lütfi Celül Sokak No:3/A
+                  <br />
+                  Yedidalga/LEFKE
+                </span>
               </li>
             </ul>
           </div>
@@ -79,7 +96,9 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-emerald-800 mt-8 pt-8 text-center text-emerald-100 text-sm">
-          <p>&copy; {new Date().getFullYear()} Ada Bahçe. Tüm hakları saklıdır.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Ada Bahçe. Tüm hakları saklıdır.
+          </p>
         </div>
       </div>
     </footer>

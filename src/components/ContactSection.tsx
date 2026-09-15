@@ -22,8 +22,7 @@ const ContactSection = () => {
                     <Phone className="w-5 h-5" />
                     <span className="font-medium text-gray-900">Telefon</span>
                   </div>
-                  <p className="text-gray-600 text-sm">+90 (555) 123 45 67</p>
-                  <p className="text-gray-600 text-sm">+90 (555) 987 65 43</p>
+                  <p className="text-gray-600 text-sm">+90 (539) 121 91 95</p>
                 </div>
 
                 <div className="flex flex-col items-start space-y-1">
