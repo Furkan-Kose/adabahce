@@ -1,15 +1,15 @@
 import React from 'react'
 import Image from 'next/image';
 import { Leaf } from 'lucide-react';
-import { getProducts } from '../lib/actions/products';
-import type { Product } from '../lib/types';
+import { getPublicProducts } from '../lib/actions/products';
+import type { PublicProduct } from '../lib/types';
 
 
 const ProductsSection = async () => {
 
-  let products: Product[] = [];
+  let products: PublicProduct[] = [];
   try {
-    products = await getProducts();
+    products = await getPublicProducts();
   } catch (error) {
     console.error('Error loading products:', error);
   }

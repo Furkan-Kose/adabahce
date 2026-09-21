@@ -16,6 +16,8 @@ export default function AdminUpdateProductPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [weightGram, setWeightGram] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -39,6 +41,10 @@ export default function AdminUpdateProductPage() {
         setProduct(data);
         setName(data.name);
         setDescription(data.description || "");
+        setPrice(data.price !== null && data.price !== undefined ? String(data.price) : "");
+        setWeightGram(
+          data.weight_gram !== null && data.weight_gram !== undefined ? String(data.weight_gram) : ""
+        );
         setImageUrl(data.image_url || "");
         setImagePreview(data.image_url);
       } else {
@@ -93,6 +99,8 @@ export default function AdminUpdateProductPage() {
         name,
         description,
         image_url: finalImageUrl,
+        price: price === "" ? null : Number(price),
+        weight_gram: weightGram === "" ? null : Number(weightGram),
       });
 
       if (result.success) {
@@ -187,6 +195,50 @@ export default function AdminUpdateProductPage() {
             disabled={saving}
           />
         </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">
+              Fiyat (TL)
+            </label>
+            <input
+              id="price"
+              name="price"
+              type="number"
+              step="0.01"
+              min="0"
+              inputMode="decimal"
+              placeholder="Örn: 49.90"
+              className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              disabled={saving}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="weight_gram" className="block text-sm font-medium text-gray-700 mb-2">
+              Gramaj (gr)
+            </label>
+            <input
+              id="weight_gram"
+              name="weight_gram"
+              type="number"
+              step="1"
+              min="0"
+              inputMode="decimal"
+              placeholder="Örn: 500"
+              className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              value={weightGram}
+              onChange={(e) => setWeightGram(e.target.value)}
+              disabled={saving}
+            />
+          </div>
+        </div>
+
+        <p className="text-sm text-gray-500 -mt-2">
+          Fiyat ve gramaj yalnızca admin panelde görünür, sitede yayınlanmaz.
+        </p>
 
         <div>
           <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">

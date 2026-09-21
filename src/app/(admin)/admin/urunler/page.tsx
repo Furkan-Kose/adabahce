@@ -1,12 +1,16 @@
 "use client";
 
-import { SearchIcon } from "lucide-react";
+import { FileDownIcon, SearchIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getProducts, deleteProduct } from "../../../../lib/actions/products";
 import type { Product } from "../../../../lib/types";
 import { toast } from "react-toastify";
 import Image from "next/image";
+import { downloadProductsPdf } from "../../../../lib/pdf/productsPdf";
+
+const formatNumber = (value: number) =>
+  new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 2 }).format(value);
 
 export default function AdminProductsPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,6 +19,7 @@ export default function AdminProductsPage() {
   const [deleting, setDeleting] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     loadProducts();
@@ -58,6 +63,24 @@ export default function AdminProductsPage() {
     }
   };
 
+  const handleExportPdf = async () => {
+    if (filteredProducts.length === 0) {
+      toast.info("PDF oluşturmak için önce ürün eklemelisiniz.");
+      return;
+    }
+
+    setExporting(true);
+    try {
+      await downloadProductsPdf(filteredProducts);
+      toast.success("PDF indiriliyor.");
+    } catch (error) {
+      console.error("Error exporting products PDF:", error);
+      toast.error("PDF oluşturulurken hata oluştu");
+    } finally {
+      setExporting(false);
+    }
+  };
+
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -89,12 +112,22 @@ export default function AdminProductsPage() {
             <SearchIcon />
           </button>
         </div>
-        <Link
-          href="/admin/urunler/ekle"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
-        >
-          Yeni Ürün Ekle
-        </Link>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleExportPdf}
+            disabled={exporting || filteredProducts.length === 0}
+            className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
+          >
+            <FileDownIcon className="w-5 h-5" />
+            {exporting ? "Hazırlanıyor..." : "PDF İndir"}
+          </button>
+          <Link
+            href="/admin/urunler/ekle"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+          >
+            Yeni Ürün Ekle
+          </Link>
+        </div>
       </div>
 
       {filteredProducts.length === 0 ? (
@@ -108,6 +141,8 @@ export default function AdminProductsPage() {
               <th className="py-3 px-6 text-left">Fotoğrafı</th>
               <th className="py-3 px-6 text-left">Ürün Adı</th>
               <th className="py-3 px-6 text-left">Açıklama</th>
+              <th className="py-3 px-6 text-left">Fiyat</th>
+              <th className="py-3 px-6 text-left">Gramaj</th>
               <th className="py-3 px-6 text-center">Aksiyonlar</th>
             </tr>
           </thead>
@@ -135,6 +170,16 @@ export default function AdminProductsPage() {
                 <td className="py-3 px-6 font-medium">{product.name}</td>
                 <td className="py-3 px-6 max-w-md truncate">
                   {product.description || "-"}
+                </td>
+                <td className="py-3 px-6 whitespace-nowrap">
+                  {product.price !== null && product.price !== undefined
+                    ? `${formatNumber(product.price)} ₺`
+                    : "-"}
+                </td>
+                <td className="py-3 px-6 whitespace-nowrap">
+                  {product.weight_gram !== null && product.weight_gram !== undefined
+                    ? `${formatNumber(product.weight_gram)} gr`
+                    : "-"}
                 </td>
                 <td className="py-3 px-6">
                   <div className="flex justify-center items-center gap-4">

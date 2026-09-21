@@ -3,7 +3,7 @@
 import { createClient } from "../supabase/server";
 import { revalidatePath } from "next/cache";
 import { AuthService } from "../auth";
-import type { Product, ProductInput } from "../types";
+import type { Product, ProductInput, PublicProduct } from "../types";
 
 /**
  * Ensure user is authenticated before performing actions
@@ -16,9 +16,33 @@ async function requireAuth() {
 }
 
 /**
- * Get all products
+ * Public (site) ürün listesi.
+ * Fiyat ve gramaj alanları bilinçli olarak seçilmez; siteye hiç gönderilmez.
+ */
+const PUBLIC_FIELDS = "id, name, description, image_url, created_at";
+
+export async function getPublicProducts(): Promise<PublicProduct[]> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("products")
+    .select(PUBLIC_FIELDS)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching products:", error);
+    throw new Error("Failed to fetch products");
+  }
+
+  return data || [];
+}
+
+/**
+ * Get all products (admin) - fiyat ve gramaj dahil
  */
 export async function getProducts(): Promise<Product[]> {
+  await requireAuth();
+
   const supabase = await createClient();
   
   const { data, error } = await supabase
@@ -38,6 +62,8 @@ export async function getProducts(): Promise<Product[]> {
  * Get a single product by ID
  */
 export async function getProduct(id: string): Promise<Product | null> {
+  await requireAuth();
+
   const supabase = await createClient();
   
   const { data, error } = await supabase
@@ -69,6 +95,8 @@ export async function createProduct(input: ProductInput): Promise<{ success: boo
         name: input.name,
         description: input.description || null,
         image_url: input.image_url || null,
+        price: input.price ?? null,
+        weight_gram: input.weight_gram ?? null,
       })
       .select()
       .single();
@@ -124,6 +152,8 @@ export async function updateProduct(
         name: input.name,
         description: input.description || null,
         image_url: input.image_url || oldProduct?.image_url || null,
+        price: input.price ?? null,
+        weight_gram: input.weight_gram ?? null,
         updated_at: new Date().toISOString(),
       })
       .eq("id", id);
