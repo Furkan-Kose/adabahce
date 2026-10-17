@@ -32,7 +32,7 @@ const formatWeight = (value: number | null, unit: ProductUnit = "gr") =>
  * Orijinal dosyalar 1MB'a kadar olabildiği için PDF'e küçültülmüş
  * JPEG kopyası gömülür. Hata olursa null döner ve PDF görselsiz üretilir.
  */
-async function loadThumbnail(url: string, size = 120): Promise<string | null> {
+async function loadThumbnail(url: string, size = 240): Promise<string | null> {
   try {
     const response = await fetch(url, { mode: "cors" });
     if (!response.ok) return null;
@@ -70,8 +70,8 @@ export function buildDocDefinition(
       { text: "#", style: "tableHeader", alignment: "center" },
       { text: "Görsel", style: "tableHeader", alignment: "center" },
       { text: "Ürün Adı", style: "tableHeader" },
-      { text: "Miktar", style: "tableHeader", alignment: "right" },
-      { text: "Fiyat", style: "tableHeader", alignment: "right" },
+      { text: "Miktar", style: "tableHeader", alignment: "center" },
+      { text: "Fiyat", style: "tableHeader", alignment: "center" },
     ],
   ];
 
@@ -79,27 +79,27 @@ export function buildDocDefinition(
     const thumbnail = thumbnails[index];
 
     body.push([
-      { text: String(index + 1), alignment: "center", color: MUTED, margin: [0, 12, 0, 0] },
+      { text: String(index + 1), alignment: "center", color: MUTED, margin: [0, 32, 0, 0] },
       thumbnail
-        ? { image: thumbnail, fit: [38, 38], alignment: "center", margin: [0, 4, 0, 4] }
-        : { text: "-", alignment: "center", color: MUTED, margin: [0, 12, 0, 0] },
-      { text: product.name, bold: true, margin: [0, 12, 0, 0] },
+        ? { image: thumbnail, fit: [80, 80], alignment: "center", margin: [0, 4, 0, 4] }
+        : { text: "-", alignment: "center", color: MUTED, margin: [0, 32, 0, 0] },
+      { text: product.name, bold: true, fontSize: 12, margin: [0, 31, 0, 0] },
       {
         text: formatWeight(product.weight_gram, product.unit ?? "gr"),
-        alignment: "right",
-        margin: [0, 12, 0, 0],
+        alignment: "center",
+        fontSize: 11,
+        margin: [0, 32, 0, 0],
       },
       {
         text: formatPrice(product.price),
-        alignment: "right",
+        alignment: "center",
         bold: true,
+        fontSize: 11,
         color: product.price === null ? MUTED : "#111827",
-        margin: [0, 12, 0, 0],
+        margin: [0, 32, 0, 0],
       },
     ]);
   });
-
-  const pricedCount = products.filter((p) => p.price !== null && p.price !== undefined).length;
 
   return {
     pageSize: "A4",
@@ -125,34 +125,17 @@ export function buildDocDefinition(
 
     footer: (currentPage: number, pageCount: number) => ({
       margin: [36, 12, 36, 0],
-      columns: [
-        { text: "Ada Bahçe - İç kullanım içindir", fontSize: 8, color: MUTED },
-        {
-          text: `Sayfa ${currentPage} / ${pageCount}`,
-          alignment: "right",
-          fontSize: 8,
-          color: MUTED,
-        },
-      ],
+      text: `Sayfa ${currentPage} / ${pageCount}`,
+      alignment: "right",
+      fontSize: 8,
+      color: MUTED,
     }),
 
     content: [
       {
-        margin: [0, 0, 0, 14],
-        columns: [
-          { text: `Toplam ürün: ${products.length}`, fontSize: 9, color: MUTED },
-          {
-            text: `Fiyat bilgisi girilmiş: ${pricedCount}`,
-            fontSize: 9,
-            color: MUTED,
-            alignment: "right",
-          },
-        ],
-      },
-      {
         table: {
           headerRows: 1,
-          widths: [18, 46, "*", 70, 65],
+          widths: [22, 90, "*", 95, 105],
           body,
         },
         layout: {
