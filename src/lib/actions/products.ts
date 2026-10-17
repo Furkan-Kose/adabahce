@@ -27,6 +27,7 @@ export async function getPublicProducts(): Promise<PublicProduct[]> {
   const { data, error } = await supabase
     .from("products")
     .select(PUBLIC_FIELDS)
+    .eq("show_on_website", true)
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -97,6 +98,9 @@ export async function createProduct(input: ProductInput): Promise<{ success: boo
         image_url: input.image_url || null,
         price: input.price ?? null,
         weight_gram: input.weight_gram ?? null,
+        unit: input.unit ?? "gr",
+        show_on_website: input.show_on_website ?? true,
+        show_in_presentation: input.show_in_presentation ?? true,
       })
       .select()
       .single();
@@ -154,6 +158,9 @@ export async function updateProduct(
         image_url: input.image_url || oldProduct?.image_url || null,
         price: input.price ?? null,
         weight_gram: input.weight_gram ?? null,
+        unit: input.unit ?? "gr",
+        show_on_website: input.show_on_website ?? true,
+        show_in_presentation: input.show_in_presentation ?? true,
         updated_at: new Date().toISOString(),
       })
       .eq("id", id);

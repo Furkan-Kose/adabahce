@@ -5,7 +5,8 @@ import { useRouter, useParams } from "next/navigation";
 import { getProduct, updateProduct, uploadProductImage } from "../../../../../lib/actions/products";
 import { ArrowLeftIcon, UploadIcon } from "lucide-react";
 import Link from "next/link";
-import type { Product } from "../../../../../lib/types";
+import { PRODUCT_UNITS } from "../../../../../lib/types";
+import type { Product, ProductUnit } from "../../../../../lib/types";
 import { toast } from "react-toastify";
 import Image from "next/image";
 
@@ -18,6 +19,9 @@ export default function AdminUpdateProductPage() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [weightGram, setWeightGram] = useState("");
+  const [unit, setUnit] = useState<ProductUnit>("gr");
+  const [showOnWebsite, setShowOnWebsite] = useState(true);
+  const [showInPresentation, setShowInPresentation] = useState(true);
   const [imageUrl, setImageUrl] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -45,6 +49,9 @@ export default function AdminUpdateProductPage() {
         setWeightGram(
           data.weight_gram !== null && data.weight_gram !== undefined ? String(data.weight_gram) : ""
         );
+        setUnit(data.unit ?? "gr");
+        setShowOnWebsite(data.show_on_website ?? true);
+        setShowInPresentation(data.show_in_presentation ?? true);
         setImageUrl(data.image_url || "");
         setImagePreview(data.image_url);
       } else {
@@ -101,6 +108,9 @@ export default function AdminUpdateProductPage() {
         image_url: finalImageUrl,
         price: price === "" ? null : Number(price),
         weight_gram: weightGram === "" ? null : Number(weightGram),
+        unit,
+        show_on_website: showOnWebsite,
+        show_in_presentation: showInPresentation,
       });
 
       if (result.success) {
@@ -218,27 +228,70 @@ export default function AdminUpdateProductPage() {
 
           <div>
             <label htmlFor="weight_gram" className="block text-sm font-medium text-gray-700 mb-2">
-              Gramaj (gr)
+              Miktar
             </label>
-            <input
-              id="weight_gram"
-              name="weight_gram"
-              type="number"
-              step="1"
-              min="0"
-              inputMode="decimal"
-              placeholder="Örn: 500"
-              className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              value={weightGram}
-              onChange={(e) => setWeightGram(e.target.value)}
-              disabled={saving}
-            />
+            <div className="flex gap-2">
+              <input
+                id="weight_gram"
+                name="weight_gram"
+                type="number"
+                step={unit === "adet" ? "1" : "any"}
+                min="0"
+                inputMode="decimal"
+                placeholder="Örn: 500"
+                className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={weightGram}
+                onChange={(e) => setWeightGram(e.target.value)}
+                disabled={saving}
+              />
+              <select
+                id="unit"
+                name="unit"
+                aria-label="Birim"
+                className="border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={unit}
+                onChange={(e) => setUnit(e.target.value as ProductUnit)}
+                disabled={saving}
+              >
+                {PRODUCT_UNITS.map((u) => (
+                  <option key={u} value={u}>
+                    {u}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
         <p className="text-sm text-gray-500 -mt-2">
-          Fiyat ve gramaj yalnızca admin panelde görünür, sitede yayınlanmaz.
+          Fiyat ve miktar sitede yayınlanmaz; yalnızca admin panelde ve sunumda görünür.
         </p>
+
+        <div>
+          <span className="block text-sm font-medium text-gray-700 mb-2">Görünürlük</span>
+          <div className="flex flex-wrap gap-6">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                className="w-4 h-4"
+                checked={showOnWebsite}
+                onChange={(e) => setShowOnWebsite(e.target.checked)}
+                disabled={saving}
+              />
+              <span className="text-gray-700">Website</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                className="w-4 h-4"
+                checked={showInPresentation}
+                onChange={(e) => setShowInPresentation(e.target.checked)}
+                disabled={saving}
+              />
+              <span className="text-gray-700">Sunum</span>
+            </label>
+          </div>
+        </div>
 
         <div>
           <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">

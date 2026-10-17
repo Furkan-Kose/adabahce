@@ -64,18 +64,18 @@ export default function AdminProductsPage() {
   };
 
   const handleExportPdf = async () => {
-    if (filteredProducts.length === 0) {
-      toast.info("PDF oluşturmak için önce ürün eklemelisiniz.");
+    if (presentationProducts.length === 0) {
+      toast.info("Sunumda gösterilecek ürün bulunmuyor.");
       return;
     }
 
     setExporting(true);
     try {
-      await downloadProductsPdf(filteredProducts);
-      toast.success("PDF indiriliyor.");
+      await downloadProductsPdf(presentationProducts);
+      toast.success("Sunum indiriliyor.");
     } catch (error) {
       console.error("Error exporting products PDF:", error);
-      toast.error("PDF oluşturulurken hata oluştu");
+      toast.error("Sunum oluşturulurken hata oluştu");
     } finally {
       setExporting(false);
     }
@@ -83,6 +83,10 @@ export default function AdminProductsPage() {
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const presentationProducts = filteredProducts.filter(
+    (product) => product.show_in_presentation ?? true
   );
 
   if (loading) {
@@ -115,11 +119,11 @@ export default function AdminProductsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={handleExportPdf}
-            disabled={exporting || filteredProducts.length === 0}
+            disabled={exporting || presentationProducts.length === 0}
             className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             <FileDownIcon className="w-5 h-5" />
-            {exporting ? "Hazırlanıyor..." : "PDF İndir"}
+            {exporting ? "Hazırlanıyor..." : "Sunum İndir"}
           </button>
           <Link
             href="/admin/urunler/ekle"
@@ -142,7 +146,8 @@ export default function AdminProductsPage() {
               <th className="py-3 px-6 text-left">Ürün Adı</th>
               <th className="py-3 px-6 text-left">Açıklama</th>
               <th className="py-3 px-6 text-left">Fiyat</th>
-              <th className="py-3 px-6 text-left">Gramaj</th>
+              <th className="py-3 px-6 text-left">Miktar</th>
+              <th className="py-3 px-6 text-left">Görünürlük</th>
               <th className="py-3 px-6 text-center">Aksiyonlar</th>
             </tr>
           </thead>
@@ -178,8 +183,25 @@ export default function AdminProductsPage() {
                 </td>
                 <td className="py-3 px-6 whitespace-nowrap">
                   {product.weight_gram !== null && product.weight_gram !== undefined
-                    ? `${formatNumber(product.weight_gram)} gr`
+                    ? `${formatNumber(product.weight_gram)} ${product.unit ?? "gr"}`
                     : "-"}
+                </td>
+                <td className="py-3 px-6">
+                  <div className="flex flex-wrap gap-1">
+                    {(product.show_on_website ?? true) && (
+                      <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                        Website
+                      </span>
+                    )}
+                    {(product.show_in_presentation ?? true) && (
+                      <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded">
+                        Sunum
+                      </span>
+                    )}
+                    {!(product.show_on_website ?? true) && !(product.show_in_presentation ?? true) && (
+                      <span className="text-xs text-gray-400">Gizli</span>
+                    )}
+                  </div>
                 </td>
                 <td className="py-3 px-6">
                   <div className="flex justify-center items-center gap-4">

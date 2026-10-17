@@ -1,5 +1,5 @@
 import type { Content, TDocumentDefinitions } from "pdfmake/interfaces";
-import type { Product } from "../types";
+import type { Product, ProductUnit } from "../types";
 
 const EMERALD = "#047857";
 const EMERALD_LIGHT = "#ecfdf5";
@@ -22,10 +22,10 @@ const dateFormatter = new Intl.DateTimeFormat("tr-TR", {
 const formatPrice = (value: number | null) =>
   value === null || value === undefined ? "-" : `${numberFormatter.format(value)} TL`;
 
-const formatWeight = (value: number | null) =>
+const formatWeight = (value: number | null, unit: ProductUnit = "gr") =>
   value === null || value === undefined
     ? "-"
-    : `${new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 2 }).format(value)} gr`;
+    : `${new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 2 }).format(value)} ${unit}`;
 
 /**
  * Ürün görselini küçültüp data URL'e çevirir.
@@ -70,8 +70,7 @@ export function buildDocDefinition(
       { text: "#", style: "tableHeader", alignment: "center" },
       { text: "Görsel", style: "tableHeader", alignment: "center" },
       { text: "Ürün Adı", style: "tableHeader" },
-      { text: "Açıklama", style: "tableHeader" },
-      { text: "Gramaj", style: "tableHeader", alignment: "right" },
+      { text: "Miktar", style: "tableHeader", alignment: "right" },
       { text: "Fiyat", style: "tableHeader", alignment: "right" },
     ],
   ];
@@ -86,12 +85,10 @@ export function buildDocDefinition(
         : { text: "-", alignment: "center", color: MUTED, margin: [0, 12, 0, 0] },
       { text: product.name, bold: true, margin: [0, 12, 0, 0] },
       {
-        text: product.description || "-",
-        color: product.description ? "#374151" : MUTED,
-        fontSize: 9,
+        text: formatWeight(product.weight_gram, product.unit ?? "gr"),
+        alignment: "right",
         margin: [0, 12, 0, 0],
       },
-      { text: formatWeight(product.weight_gram), alignment: "right", margin: [0, 12, 0, 0] },
       {
         text: formatPrice(product.price),
         alignment: "right",
@@ -114,7 +111,7 @@ export function buildDocDefinition(
       columns: [
         [
           { text: "Ada Bahçe", style: "brand" },
-          { text: "Ürün Listesi", style: "brandSub" },
+          { text: "Ürün Sunumu", style: "brandSub" },
         ],
         {
           text: currentPage === 1 ? dateFormatter.format(generatedAt) : "",
@@ -155,7 +152,7 @@ export function buildDocDefinition(
       {
         table: {
           headerRows: 1,
-          widths: [18, 46, "*", "*", 55, 65],
+          widths: [18, 46, "*", 70, 65],
           body,
         },
         layout: {
@@ -182,14 +179,14 @@ export function buildDocDefinition(
     },
 
     info: {
-      title: "Ada Bahçe - Ürün Listesi",
+      title: "Ada Bahçe - Ürün Sunumu",
       author: "Ada Bahçe Admin Paneli",
     },
   };
 }
 
 /**
- * Ürün listesini PDF olarak indirir.
+ * Ürün sunumunu PDF olarak indirir.
  */
 export async function downloadProductsPdf(products: Product[]): Promise<void> {
   const [pdfMakeModule, vfsModule] = await Promise.all([
@@ -212,5 +209,5 @@ export async function downloadProductsPdf(products: Product[]): Promise<void> {
 
   pdfMake
     .createPdf(buildDocDefinition(products, thumbnails, generatedAt))
-    .download(`adabahce-urunler-${stamp}.pdf`);
+    .download(`adabahce-sunum-${stamp}.pdf`);
 }
